@@ -1,0 +1,14 @@
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:31:54 -0500] "GET / HTTP/1.1" 200 994 http-bio-8080-exec-1 105
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:31:54 -0500] "GET /images/2group_dogs.png HTTP/1.1" 200 238765 http-bio-8080-exec-3 4
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:31:54 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-4 2
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:32:04 -0500] "POST /Register HTTP/1.1" 200 1749 http-bio-8080-exec-5 7
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:33:18 -0500] "POST /Register HTTP/1.1" 200 994 http-bio-8080-exec-7 29
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:33:30 -0500] "POST /login HTTP/1.1" 200 1476 http-bio-8080-exec-8 15
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:33:44 -0500] "POST /ViewAppointment HTTP/1.1" 200 837 http-bio-8080-exec-9 26
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:34:05 -0500] "POST /Logout HTTP/1.1" 200 460 http-bio-8080-exec-10 6
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:34:06 -0500] "GET /login HTTP/1.1" 200 994 http-bio-8080-exec-10 1
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:34:15 -0500] "POST /Logout HTTP/1.1" 200 460 http-bio-8080-exec-10 1
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:34:16 -0500] "GET /login HTTP/1.1" 200 994 http-bio-8080-exec-10 1
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:34:24 -0500] "POST /login HTTP/1.1" 200 1645 http-bio-8080-exec-10 8
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:34:27 -0500] "POST /Appointment HTTP/1.1" 200 2139 http-bio-8080-exec-10 7
+0:0:0:0:0:0:0:1 - - [10/May/2016:18:35:10 -0500] "POST /Logout HTTP/1.1" 200 460 http-bio-8080-exec-10 2
