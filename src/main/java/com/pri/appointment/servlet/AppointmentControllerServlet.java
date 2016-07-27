@@ -62,7 +62,7 @@ public class AppointmentControllerServlet extends HttpServlet
                           RequestDispatcher rdf = getServletContext().getRequestDispatcher("/WEB-INF/views/Appointment.jsp");
 			  rdf.include(request, response);
 				}
-        	    catch(SQLException se)
+        	        catch(SQLException se)
 				{
 				se.printStackTrace();}
 					}
