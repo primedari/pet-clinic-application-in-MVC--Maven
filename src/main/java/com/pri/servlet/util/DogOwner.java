@@ -2,11 +2,8 @@ package com.pri.servlet.util;
 
 import java.io.Serializable;
 
-
-
-	public class DogOwner implements Serializable{
-	private static final long serialVersionUID = 6297385302078200511L;
-
+public class DogOwner implements Serializable{       // Owner Class
+private static final long serialVersionUID = 6297385302078200511L;
 	private String oname;
 	private String address;
 	private int numpets;
