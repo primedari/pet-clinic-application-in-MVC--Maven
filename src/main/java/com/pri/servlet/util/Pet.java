@@ -1,15 +1,14 @@
 package com.pri.servlet.util;
 
 import java.io.Serializable;
-public class Pet  implements Serializable{
+public class Pet  implements Serializable{   // Pet Class
+
 	private static final long serialVersionUID = 6297385302078200511L;
-	
 	private String petname;
 	private String breed;
 	private String color;
 	private int petid;
    
-	
 	public Pet()
 	{
 		
@@ -20,10 +19,7 @@ public class Pet  implements Serializable{
 	  this.breed= breed;
 	  this.color=color;
 	  this.petid= petid;
-	  
-	
-	}
-	
+	 }
 	public String getBreed() {
 		return breed;
 	}
