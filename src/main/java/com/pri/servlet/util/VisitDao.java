@@ -1,6 +1,7 @@
 package com.pri.servlet.util;
 
 import java.io.Serializable;
+
 public class VisitDao  implements Serializable {     //Visit Class
 
  private static final long serialVersionUID = 6297385302078200511L;
