@@ -41,7 +41,6 @@ public class Registartion extends HttpServlet {
 			Connection con = (Connection) getServletContext().getAttribute("DBConnection");
 			PreparedStatement ps = null;
 			try {
-				
 				ps = con.prepareStatement("delete from Owner where ownerid=?");   
 				ps.setInt(1, ownerid);
 				System.out.println(ownerid);
@@ -51,15 +50,16 @@ public class Registartion extends HttpServlet {
 				PrintWriter out= response.getWriter();
 				out.println("<font color=red>Deletion successful.</font>");
 				view1.include(request, response);
-			}catch (SQLException e)
-			{
+			}catch (SQLException e){
 				e.printStackTrace();
-			   throw new ServletException("DB Connection problem.");
-			}finally{
+			       throw new ServletException("DB Connection problem.");
+			}
+			finally{
 				try {
 					ps.close();
-				} catch (SQLException e) { e.printStackTrace();
-					
+				      } 
+				      catch (SQLException e) { 
+				      e.printStackTrace();
 				}
 			}
 		}	
@@ -87,20 +87,17 @@ public class Registartion extends HttpServlet {
 			catch (SQLException e)
 			{
 				e.printStackTrace();
-				
 				throw new ServletException("DB Connection problem.");
-			}finally{
+			}
+			finally{
 				try {
 					ps.close();
 				} catch (SQLException e) { e.printStackTrace();
 					
-				}
+			    }
 			}
 		}	
-		
-			
 		/* Insert the record in Owner and Visit Table*/
-		
 		else if (uri.endsWith("Register")){ 
 		String ownername = request.getParameter("ownername");
 		String address = request.getParameter("address");
@@ -176,24 +173,24 @@ public class Registartion extends HttpServlet {
             if(rswt!=null){ 
             while(rswt.next()){  
         		   String petname= rswt.getString("petname");
-        	       String petbreed= rswt.getString("breed");
+        	           String petbreed= rswt.getString("breed");
         		   int pettid= rswt.getInt("petid");
         		   ps=con.prepareStatement("insert into Visit(ownerid,petid, ownername,petname, petbreed) values(?,?,?,?,?)");
        			   ps.setInt(1, ownerrid);
        			   ps.setInt(2, pettid);
        			   ps.setString(3, ownernamee);
        			   ps.setString(4, petname);
-       		       ps.setString(5, petbreed);
-       		       ps.execute();
+       		           ps.setString(5, petbreed);
+       		           ps.execute();
        		   	        } 
-        	        }
+        	             }
 			 RequestDispatcher rdf = getServletContext().getRequestDispatcher("/WEB-INF/views/Login.jsp");
 			 rdf.include(request, response);
 		         }       
         	      catch(SQLException se){
 	              se.printStackTrace();
               }
-		  }
+          }
      }
   }
 }
