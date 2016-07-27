@@ -57,9 +57,9 @@ try {
 ps.close();    // Close DB Connection
 } catch (SQLException e) { 
     e.printStackTrace();
-   }
-       }
+                }
+              }
           }
-             }
-               }
+        }
+     }
 
