@@ -5,22 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
-
+<title>View</title>   <!-- Visit Page -->
 </head>
 <body>
 <form action ="ViewAppointment" method ="post">
 <table>
 <tr><td> tuii </td> <td><input type="text" name="abc" value ="aggk"></td></tr>
-
 </table>
 <input type ="submit" value="ViewAppointment">
 </form>
-
-
-
-
-
 </body>
 </html>
