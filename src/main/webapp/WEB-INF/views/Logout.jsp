@@ -4,18 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- 
 <title>Logout</title>
-
- 
 </head>
 <body bgcolor= "#0099ff" >
- 
+  <!-- Logout -->
 <h1>Logged out Successfully !!!!!!!!!</h1>  
 please  <a href="/login">Login</a>
 <div class="div-wrapper">
-    <img src="images/2group_dogs.png" align = left width ="500" height ="500"/>
+<img src="images/2group_dogs.png" align = left width ="500" height ="500"/>
 </div>
- 
 </body>
 </html>
