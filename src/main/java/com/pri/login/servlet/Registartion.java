@@ -1,17 +1,11 @@
 package com.pri.login.servlet;
 
-import java.io.IOException
-;
-
+import java.io.IOException;
 import java.io.PrintWriter;
-//import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.util.ArrayList;
-//import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,10 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.pri.dao.DogOwnerDao;
-//import com.pri.servlet.util.DogOwner;
-
 
 @WebServlet (urlPatterns = {"/Register","/Delete","/Update"})
 public class Registartion extends HttpServlet {
@@ -32,20 +23,15 @@ public class Registartion extends HttpServlet {
 		dao= new DogOwnerDao();
 	}
 	
-	
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		
-		    /* Delete record in Owner Table */
+		 /* Delete record in Owner Table */
 		String uri = request.getRequestURI();
 		if(uri.endsWith("Delete"))
 		{
-			System.out.println("yes");
 			int ownerid = Integer.parseInt(request.getParameter("ownerid"));
 			String errorMsg = null;
-			
-			if(ownerid<0 || ownerid ==0)
+			if(ownerid<0 || ownerid ==0)  // Validation check
 			{
 				errorMsg ="Ownerid can't be zero or less";
 				request.setAttribute("errormessage", errorMsg);
@@ -56,11 +42,10 @@ public class Registartion extends HttpServlet {
 			PreparedStatement ps = null;
 			try {
 				
-				ps = con.prepareStatement("delete from Owner where ownerid=?");
+				ps = con.prepareStatement("delete from Owner where ownerid=?");   
 				ps.setInt(1, ownerid);
 				System.out.println(ownerid);
 				ps.executeUpdate();
-				System.out.println("Deleted !!!");
 				RequestDispatcher view1 = request.getRequestDispatcher("/WEB-INF/views/Register.jsp");
 				System.out.println(ps);
 				PrintWriter out= response.getWriter();
@@ -69,8 +54,7 @@ public class Registartion extends HttpServlet {
 			}catch (SQLException e)
 			{
 				e.printStackTrace();
-				
-				throw new ServletException("DB Connection problem.");
+			   throw new ServletException("DB Connection problem.");
 			}finally{
 				try {
 					ps.close();
@@ -81,38 +65,26 @@ public class Registartion extends HttpServlet {
 		}	
 			
 		/* Update Owner Table */
-		
-		
 		if(uri.endsWith("Update"))
 		{
-			System.out.println("yes");
-		
-			Connection con = (Connection) getServletContext().getAttribute("DBConnection");
+		    Connection con = (Connection) getServletContext().getAttribute("DBConnection");
 			PreparedStatement ps = null;
 			try {
-				
-				ps = con.prepareStatement("update Owner set address=?,phone=?,numpets =? where ownerid=?");
-				
-			
-				
-				String address = request.getParameter("address");
-				
+			ps = con.prepareStatement("update Owner set address=?,phone=?,numpets =? where ownerid=?");
+			    String address = request.getParameter("address");
 				String phone = request.getParameter("phone");
 				String numpets= request.getParameter("numpets");
-				
 				String id = request.getParameter("ownerid");
 				
 				ps.setInt(4,Integer.parseInt(id));
 				ps.setString(1, address);
 				ps.setString(2, phone);
 				ps.setInt(3,Integer.parseInt(numpets));
-				
 				ps.executeUpdate();
 				RequestDispatcher view1 = request.getRequestDispatcher("/WEB-INF/views/Updation.jsp");
-				
-				
 				view1.include(request, response);
-			}catch (SQLException e)
+			}
+			catch (SQLException e)
 			{
 				e.printStackTrace();
 				
@@ -129,19 +101,12 @@ public class Registartion extends HttpServlet {
 			
 		/* Insert the record in Owner and Visit Table*/
 		
-		
-		
-			else if (uri.endsWith("Register"))
-			
-{
+		else if (uri.endsWith("Register")){ 
 		String ownername = request.getParameter("ownername");
 		String address = request.getParameter("address");
 		String numpets= request.getParameter("numpets");
 		String phone = request.getParameter("phone");
 		String breed = request.getParameter("breed");
-		
-
-		
 		String ownerid = request.getParameter("ownerid");
 		String UserName= request.getParameter("UserName");
 		String Password = request.getParameter("Password");
@@ -156,7 +121,7 @@ public class Registartion extends HttpServlet {
 		if(numpets == null || numpets.equals("")){
 			errorMsg = "NumPets can't be null or empty.";
 		}
-		if(phone == null || phone.equals("")){
+		if(phone == null || phone.equals("")){                     //Validation check 
 			errorMsg = "Phone can't be null or empty.";
 		}
 		if(ownerid == null || ownerid.equals("")){
@@ -192,83 +157,48 @@ public class Registartion extends HttpServlet {
 			ps.setInt(6, Integer.parseInt(ownerid));
 			ps.setString(7, UserName);
 			ps.setString(8, Password);
-			
 			ps.execute();
 			
-
-			
-
-			
-				Cookie[] cookie = request.getCookies();
-				
-			
-			for(Cookie c:cookie)			
-		if((c.getName().equals("userid") ))
-				UserName= c.getValue();
-			System.out.println(UserName);
-			
-			System.out.println(breed);
-		
+			Cookie[] cookie = request.getCookies();     // Cookie for user id
+		    for(Cookie c:cookie)			
+		    if((c.getName().equals("userid") ))
+			UserName= c.getValue();
 			ps=con.prepareStatement("Select * from Owner where UserName =?");
 			ps.setString(1, UserName);
 			ResultSet rs=ps.executeQuery();
-		    boolean gasd	=rs.next();
-		    System.out.println(gasd);
 			String ownernamee= rs.getString("ownername");
 			System.out.println(ownernamee);
-		  int ownerrid	= rs.getInt("ownerid");
-		   System.out.println(ownerid);
-		
-		
-		
-   ps=con.prepareStatement("select * from Pet where breed =?");
-	ps.setString(1, breed);
-	System.out.println(breed);
-	ResultSet rswt   = ps.executeQuery();
-  	
-           if(rswt!=null)
-           { while(rswt.next())
-        	   {  
+		    int ownerrid = rs.getInt("ownerid");
+		    ps=con.prepareStatement("select * from Pet where breed =?");
+	         ps.setString(1, breed);
+	        ResultSet rswt   = ps.executeQuery();
+	        
+            if(rswt!=null){ 
+            while(rswt.next()){  
         		   String petname= rswt.getString("petname");
-        			
-        			String petbreed= rswt.getString("breed");
-        			
-        			int pettid= rswt.getInt("petid");
-
-        		  ps=con.prepareStatement("insert into Visit(ownerid,petid, ownername,petname, petbreed) values(?,?,?,?,?)");
-       			ps.setInt(1, ownerrid);
-       			ps.setInt(2, pettid);
-       			ps.setString(3, ownernamee);
-       			ps.setString(4, petname);
-       			ps.setString(5, petbreed);
-       		     ps.execute();
-       		   		 System.out.println("inserted");
-        	   }  }
+        	       String petbreed= rswt.getString("breed");
+        		   int pettid= rswt.getInt("petid");
+        		   ps=con.prepareStatement("insert into Visit(ownerid,petid, ownername,petname, petbreed) values(?,?,?,?,?)");
+       			   ps.setInt(1, ownerrid);
+       			   ps.setInt(2, pettid);
+       			   ps.setString(3, ownernamee);
+       			   ps.setString(4, petname);
+       		       ps.setString(5, petbreed);
+       		       ps.execute();
+       		   	        } 
+        	        }
 			 RequestDispatcher rdf = getServletContext().getRequestDispatcher("/WEB-INF/views/Login.jsp");
 			 rdf.include(request, response);
-		
-        	   
-		}catch(SQLException se)
-		{se.printStackTrace();}
-		}
+		         }       
+        	      catch(SQLException se){
+	              se.printStackTrace();
+              }
+		  }
+     }
+  }
 }
-	}
 	
-	
-	
-	
-}
-			
-	
-		
-		
-			
 
-		
-
-
-		
-	
 
 
 
