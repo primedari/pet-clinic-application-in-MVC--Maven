@@ -1,33 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
-
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<!-- Appointment -->
 <html>
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Appointmnet visit details</title>
-
 </head>
 <body>
-
 <table>
 <tr>
-<th>VisitId</th>
+ <!-- Visit details fields -->
+<th>VisitId</th>           
 <th>OwnerId</th>
 <th>PetId</th>
 <th>OwnerName</th>
 <th>PetName</th>
 <th>PetBreed</th>
-
 </tr>
-
-<c:forEach items="${aArray}" var="item">
+<c:forEach items="${aArray}" var="item">           
 <tr>
 <td>${item.visitid}</td>
 <td>${item.ownerid}</td>
@@ -38,12 +33,9 @@
 </tr>
 </c:forEach>
 </table>
-
 <h3 style="background-color:blue;color:blue;">c</h3>
-<!-- body -->
-
-
-<form action="Logout" method="post">
+<!-- Logout -->
+<form action="Logout" method="post">               
 <input type="submit" value="Logout" >
 </form>
 </body>
