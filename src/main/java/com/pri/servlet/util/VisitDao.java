@@ -1,9 +1,9 @@
 package com.pri.servlet.util;
 
 import java.io.Serializable;
-public class VisitDao  implements Serializable {
-	private static final long serialVersionUID = 6297385302078200511L;
-	
+public class VisitDao  implements Serializable {     //Visit Class
+
+ private static final long serialVersionUID = 6297385302078200511L;
  private int visitid;
  private int ownerid;
  private int petid;
@@ -49,9 +49,11 @@ public class VisitDao  implements Serializable {
 }
   public void setOwnername(String ownername) {
 	this.ownername = ownername;
-}public void setPetbreed(String petbreed) {
+}
+public void setPetbreed(String petbreed) {
 	this.petbreed = petbreed;
-}public void setPetid(int petid) {
+}
+public void setPetid(int petid) {
 	this.petid = petid;
 }
 public void setPetname(String petname) {
@@ -59,5 +61,5 @@ public void setPetname(String petname) {
 }
 public void setVisitid(int visitid) {
 	this.visitid = visitid;
-}
+ }
 }
