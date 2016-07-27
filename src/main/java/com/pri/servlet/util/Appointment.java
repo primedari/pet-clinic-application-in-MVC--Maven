@@ -6,9 +6,8 @@ public class Appointment {
 	private int visitid;
 	private String petname;
 	private String ownername;
-    
-	
-	public Appointment()
+   
+	public Appointment()      // Appointment Class
 	{
 		
 	}
@@ -21,7 +20,6 @@ public class Appointment {
 		 this.ownername=ownername;
 		 
 	 }
-	 
 	 public void setOwnerId(int ownerid) {
 			this.ownerid=ownerid;
 		}
@@ -39,8 +37,6 @@ public class Appointment {
 			this.visitid= visitid;
 		
 		}
-
-
 		public String getPetName() {
 			return petname;
 		}
